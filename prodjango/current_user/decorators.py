@@ -1,0 +1,5 @@
+from django.utils.decorators import decorator_from_middleware
+
+from snippets.prodjango.current_user.middleware import CurrentUserMiddleware
+
+record_current_user = decorator_from_middleware(CurrentUserMiddleware)
