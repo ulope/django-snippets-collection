@@ -6,7 +6,8 @@ from snippets.prodjango.current_user import registration
 class CurrentUserField(models.ForeignKey):
     def __init__(self, **kwargs):
         kwargs['null'] = True
-        super(CurrentUserField, self).__init__(User, **kwargs)
+        to = kwargs.pop('to', User)
+        super(CurrentUserField, self).__init__(to, **kwargs)
 
     def contribute_to_class(self, cls, name):
         super(CurrentUserField, self).contribute_to_class(cls, name)
