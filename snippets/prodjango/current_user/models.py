@@ -12,3 +12,16 @@ class CurrentUserField(models.ForeignKey):
         registry = registration.FieldRegistry()
         registry.add_field(cls, self)
 
+try:
+    from south.modelsinspector import add_introspection_rules
+    rules = [
+        (
+            (CurrentUserField, ),
+            [],
+            {
+            },
+        ),
+    ]
+    add_introspection_rules(rules, ["^snippets\.prodjango\.current_user\."])
+except  ImportError:
+    pass
